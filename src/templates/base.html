@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CentrePlast</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+    <div class="navbar">
+        <a href="{% url 'index' %}">Home</a>
+        {% if user.is_authenticated %}
+        <span>Hello, {{ user.first_name }}</span>
+        <!-- Logout form -->
+        <form action="{% url 'logout' %}" method="post" style="display: inline;">
+            {% csrf_token %}
+            <button type="submit"
+                style="background: none; cursor: pointer; border: none; color: white; padding: 14px 20px; text-decoration: none;">Logout</button>
+        </form>
+        <a href="{% url 'report-list' %}" class="right">Reports</a>
+        {% else %}
+        <a href="{% url 'login' %}" class="right">Login</a>
+        {% endif %}
+    </div>
+    <div class="main">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Welcome to CentrePlast</h1>
+{% if user.is_authenticated %}
+<p>Check out the latest reports on your data.</p>
+<a href="{% url 'report-list' %}">Check Reports</a>
+{% endif %}
+{% endblock %}

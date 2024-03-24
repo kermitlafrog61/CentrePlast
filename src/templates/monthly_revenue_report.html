@@ -1,0 +1,13 @@
+{% extends "admin/base_site.html" %}
+
+{% block content %}
+<h2>Monthly Revenue Report</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Generate Report</button>
+</form>
+{% if total_revenue %}
+<p>Total Revenue: {{ total_revenue }}</p>
+{% endif %}
+{% endblock %}

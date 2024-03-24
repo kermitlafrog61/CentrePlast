@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Reports</h2>
+{% if object_list %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Manager</th>
+            <th>Address</th>
+            <th>Revenue</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for report in object_list %}
+        <tr>
+            <td>{{ report.manager.first_name }}</td>
+            <td>{{ report.address }}</td>
+            <td>{{ report.revenue }}</td>
+            <td>{{ report.date }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No reports available.</p>
+{% endif %}
+{% endblock %}
